@@ -1,38 +1,35 @@
-const loginForm = document.getElementById("login-form")
-const usernameInput = document.getElementById("username")
-const passwordInput = document.getElementById("password")
-const checkboxInput = document.getElementById("checkbox")
-const existingButton = document.getElementById("existing")
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("login-form");
+  const existingButton = document.getElementById("existing");
 
-const storedUsername = localStorage.getItem("username")
-const storedPassword = localStorage.getItem("password")
-
-if (storedUsername && storedPassword) {
+  if (localStorage.getItem("username") && localStorage.getItem("password")) {
     existingButton.style.display = "block";
+  }
 
-    existingButton.addEventListener("click", function () {
-        alert(`Logged in as ${storedUsername}`);
-    });
-}
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-loginForm.addEventListener("submit", function (event) {
-    event.preventDefault(); 
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const checkbox = document.getElementById("checkbox").checked;
 
-    const username = usernameInput.value;
-    const password = passwordInput.value;
-    const rememberMe = checkboxInput.checked;
-
-    if (rememberMe) {
-        localStorage.setItem("username", username);
-        localStorage.setItem("password", password);
+    if (checkbox) {
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+      existingButton.style.display = "block";
     } else {
-        localStorage.removeItem("username");
-        localStorage.removeItem("password");
+      localStorage.removeItem("username");
+      localStorage.removeItem("password");
+      existingButton.style.display = "none";
     }
 
     alert(`Logged in as ${username}`);
+  });
 
-    usernameInput.value = '';
-    passwordInput.value = '';
-    checkboxInput.checked = false;
-} );
+  existingButton.addEventListener("click", function () {
+    const username = localStorage.getItem("username");
+    const password = localStorage.getItem("password");
+
+    alert(`Logged in as ${username}`);
+  });
+});
