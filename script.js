@@ -1,11 +1,11 @@
-const loginForm = document.getElementById("login-form");
-const usernameInput = document.getElementById("username");
-const passwordInput = document.getElementById("password");
-const checkboxInput = document.getElementById("checkbox");
-const existingButton = document.getElementById("existing");
+const loginForm = document.getElementById("login-form")
+const usernameInput = document.getElementById("username")
+const passwordInput = document.getElementById("password")
+const checkboxInput = document.getElementById("checkbox")
+const existingButton = document.getElementById("existing")
 
-const storedUsername = localStorage.getItem("username");
-const storedPassword = localStorage.getItem("password");
+const storedUsername = localStorage.getItem("username")
+const storedPassword = localStorage.getItem("password")
 
 if (storedUsername && storedPassword) {
     existingButton.style.display = "block";
@@ -35,4 +35,4 @@ loginForm.addEventListener("submit", function (event) {
     usernameInput.value = '';
     passwordInput.value = '';
     checkboxInput.checked = false;
-});
+} );
