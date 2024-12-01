@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   existingButton.addEventListener("click", function () {
-    const username = localStorage.getItem("username");
+    const username = localStorage.getItem("username")
     const password = localStorage.getItem("password");
 
     alert(`Logged in as ${username}`);
